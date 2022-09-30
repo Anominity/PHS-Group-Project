@@ -1,21 +1,17 @@
 ---
 title: "R Notebook"
-output: html_notebook
+output:
+  html_document:
+    df_print: paged
 ---
+```{r, echo=FALSE, message=FALSE}
+library(tidyverse)
+```
+
+
 ```{r}
-activity_patient_demographics %>% 
-  distinct(admission_type)
 
-
-specialty_admissions <- read_csv("/Users/anominity/Desktop/CodeClan/gitgroup/phs_group_project/02_cleaned_data/admissions_by_speciality_clean.csv")
-
-bed_admissions %>% 
-  filter(hb_name == "NHS Ayrshire and Arran",
-         specialty == "All") %>% 
-  ggplot() +
-  aes(x = week_ending, y = number_admissions) +
-  geom_line(aes(colour = hb_name), show.legend = FALSE)
-  
+bed_admissions <- read_csv("/Users/anomi/OneDrive/Desktop/Repositories/PHS-Group-Project/02_cleaned_data/admissions_by_speciality_clean.csv")
 
 
 bed_admissions %>% 
@@ -25,6 +21,10 @@ bed_admissions %>%
 ```
 
 ```{r}
+class(bed_admissions$week_ending)
+unique(bed_admissions$specialty)
+unique(bed_admissions$admission_type)
+
 bed_admissions %>% 
   filter(specialty == "All", 
          hb == "S08000015",
@@ -32,10 +32,8 @@ bed_admissions %>%
          between(week_ending, min(week_ending), max(week_ending))) %>%  
   ggplot() +
   geom_line(aes(x = week_ending, y = number_admissions)) +
-  geom_line(aes(x = week_ending, average20182019, colour = "red"))
+  geom_line(aes(x = week_ending, average20182019), colour = "red")
 
-class(bed_admissions$week_ending)
-unique(bed_admissions$specialty)
-unique(bed_admissions$admission_type)
 ```
 
+Here we can see a significant change in the number of admissions in early 2020 as compared to the same period of 2018
