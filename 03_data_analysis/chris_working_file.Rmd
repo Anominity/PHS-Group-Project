@@ -36,4 +36,4 @@ bed_admissions %>%
 
 ```
 
-Here we can see a significant change in the number of admissions in early 2020 as compared to the same period of 2018
+With the red line showing the weekly admissions across 2018 through 2019, and the black line showing weekly admissions for the period 2020 through 2021. We can observe, at the end of the first quarter of 2020, there is a significant drop of just under 50% of admissions (1080 down to 550), with another significant drop off beginning in the last quarter of 2020, about 30% (1050 down to 700).  These line up with both the lockdowns during Covid.
